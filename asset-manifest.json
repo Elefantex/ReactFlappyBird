@@ -12,7 +12,7 @@
     "453.21935b00.chunk.js.map": "/todo/static/js/453.21935b00.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c89d5536.css",
-    "static/js/main.de8e1adb.js"
+    "./static/css/main.c89d5536.css",
+    "./static/js/main.de8e1adb.js"
   ]
 }
