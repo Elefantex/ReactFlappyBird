@@ -1,0 +1,144 @@
+.bird {
+  width: 70px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  z-index: 10;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('../img/bird.png');
+}
+
+.scene {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('../img/scene.jpg');
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.allPipes {
+  position: absolute;
+  top: 0
+}
+
+.pipeTop {
+  width: 80px;
+  top: 0;
+  background-image: url("../img/pipeTop.png");
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+.pipeMiddle {
+  width: 80px;
+  height: 250px;
+}
+
+.pipeBottom {
+  width: 80px;
+  background-image: url("../img/pipeBottom.png");
+
+}
+
+.background {
+  position: absolute;
+  bottom: 0;
+  height:15%;
+  width: 100%;
+  background-image: url("../img/background.png");
+  /* Reemplaza "ruta/a/tu/imagen-background.jpg" con la ruta real de tu imagen */
+  background-position: top;
+  background-repeat: repeat-x;
+ /* animation: slideright 400s infinite linear;
+  -webkit-animation: slideright 400s infinite linear;*/
+  /* Prefijo Webkit para la propiedad de animación */
+  z-index: 1;
+ 
+
+}
+
+.backgroundStop {
+  position: absolute;
+  bottom: 0;
+  height: 15%;
+  width: 100%;
+  background-image: url("../img/background.png");
+  /* Reemplaza "ruta/a/tu/imagen-background.jpg" con la ruta real de tu imagen */
+  background-position: top;
+  z-index: 1;
+}
+
+.gameOver {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.58);
+  width: 100%;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.scoreText {
+  font-family: 'FlappyBirdFont', sans-serif;
+  font-size: 36px;
+  color: white;
+  -webkit-text-stroke: 2px black;
+  text-align: center;
+  margin-bottom: 5px;
+
+}
+.scoreTextMain{
+  font-family: 'FlappyBirdFont', sans-serif;
+  font-size: 48px;
+  color: white;
+  -webkit-text-stroke: 2px black;
+  text-align: center;
+  margin-bottom: 5px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+}
+
+.text {
+
+  font-family: 'FlappyBirdFont', sans-serif;
+  font-size: 18px;
+  color: #FC7858;
+  text-align: center;
+  margin-bottom: 5px;
+
+
+}
+
+.scoreText:last-child {
+  font-family: 'FlappyBirdFont', sans-serif;
+  font-size: 36px;
+  color: white;
+  -webkit-text-stroke: 2px black;
+  text-align: center;
+  margin-bottom: 0;
+
+}
+
+.container {
+  padding: 20px;
+}
+
+.restartBtn {
+  margin-top: 15px;
+  font-family: 'FlappyBirdFont', sans-serif;
+  background-color: #F3B88C;
+  font-size: 20px;
+  border: 3px solid white;
+  color: black;
+  outline: 3px solid #553000;
+
+}
