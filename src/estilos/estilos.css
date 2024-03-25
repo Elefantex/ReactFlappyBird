@@ -8,6 +8,23 @@
   background-repeat: no-repeat;
   background-image: url('../img/bird.png');
 }
+@media only screen and (max-width: 768px) {
+  /* Agrega aquí tus estilos específicos para pantallas más pequeñas */
+  .bird {
+    width: 70px;
+    height: 50px;
+    position: absolute;
+    left: 40%;
+    z-index: 10;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../img/bird.png');
+  }
+  
+ 
+
+  /* Otros estilos específicos para pantallas pequeñas */
+}
 
 .scene {
   position: absolute;
