@@ -18,7 +18,7 @@ function App() {
 
   const [rotate, setRotate] = useState(0)
 
-  const [velocity, setVelocity] = useState(5)
+  const [velocity, setVelocity] = useState(4)
   const [tiempo, setTiempo] = useState(1500)
   const [spaceBetweenTubes, setSpaceBetweenTubes] = useState(250)
 
