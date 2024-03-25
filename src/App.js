@@ -18,9 +18,9 @@ function App() {
 
   const [rotate, setRotate] = useState(0)
 
-  const [velocity, setVelocity] = useState(4.8)
-  const [tiempo, setTiempo] = useState(1500)
-  const [spaceBetweenTubes, setSpaceBetweenTubes] = useState(250)
+  const velocity = 4.9
+  const tiempo = 1500
+  const spaceBetweenTubes = 250
 
 
 
@@ -80,9 +80,9 @@ function App() {
 
 
   const handler = (e) => {
-    console.log(e)
+
     if (play && !e.isComposing && (e.keyCode === 32 || e.type === 'click')) {
-      if (bottom < heightScreen-50) {
+      if (bottom < heightScreen - 50) {
         jump();
       }
 
@@ -180,7 +180,7 @@ function App() {
         generateTube();
         removeOffscreenTubes(); // Eliminar los tubos que han salido de la pantalla
       }
-    }, tiempo); 
+    }, tiempo);
     // Intervalo de 1.5 segundos (ajustable según la velocidad deseada)
 
     // Limpiar el intervalo cuando el componente se desmonte para evitar pérdida de memoria
