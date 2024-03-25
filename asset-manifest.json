@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/ReactFlappyBird/static/css/main.293c0103.css",
+    "main.css": "/ReactFlappyBird/static/css/main.4257b44d.css",
     "main.js": "/ReactFlappyBird/static/js/main.a3c5e989.js",
     "static/js/453.21935b00.chunk.js": "/ReactFlappyBird/static/js/453.21935b00.chunk.js",
     "static/media/background.png": "/ReactFlappyBird/static/media/background.42827edd65e45083dab6.png",
     "static/media/scene.jpg": "/ReactFlappyBird/static/media/scene.48e5451a651740135a7b.jpg",
     "static/media/flappy-font.ttf": "/ReactFlappyBird/static/media/flappy-font.41ab3bb3e47ae6c9d524.ttf",
     "index.html": "/ReactFlappyBird/index.html",
-    "main.293c0103.css.map": "/ReactFlappyBird/static/css/main.293c0103.css.map",
+    "main.4257b44d.css.map": "/ReactFlappyBird/static/css/main.4257b44d.css.map",
     "main.a3c5e989.js.map": "/ReactFlappyBird/static/js/main.a3c5e989.js.map",
     "453.21935b00.chunk.js.map": "/ReactFlappyBird/static/js/453.21935b00.chunk.js.map"
   },
   "entrypoints": [
-    "./static/css/main.293c0103.css",
+    "./static/css/main.4257b44d.css",
     "./static/js/main.a3c5e989.js"
   ]
 }
