@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/todo/static/css/main.c89d5536.css",
-    "main.js": "/todo/static/js/main.de8e1adb.js",
-    "static/js/453.21935b00.chunk.js": "/todo/static/js/453.21935b00.chunk.js",
-    "static/media/background.png": "/todo/static/media/background.42827edd65e45083dab6.png",
-    "static/media/scene.jpg": "/todo/static/media/scene.48e5451a651740135a7b.jpg",
-    "static/media/flappy-font.ttf": "/todo/static/media/flappy-font.41ab3bb3e47ae6c9d524.ttf",
-    "index.html": "/todo/index.html",
-    "main.c89d5536.css.map": "/todo/static/css/main.c89d5536.css.map",
-    "main.de8e1adb.js.map": "/todo/static/js/main.de8e1adb.js.map",
-    "453.21935b00.chunk.js.map": "/todo/static/js/453.21935b00.chunk.js.map"
+    "main.css": "/ReactFlappyBird/static/css/main.9aba8f54.css",
+    "main.js": "/ReactFlappyBird/static/js/main.416372f4.js",
+    "static/js/453.21935b00.chunk.js": "/ReactFlappyBird/static/js/453.21935b00.chunk.js",
+    "static/media/background.png": "/ReactFlappyBird/static/media/background.42827edd65e45083dab6.png",
+    "static/media/scene.jpg": "/ReactFlappyBird/static/media/scene.48e5451a651740135a7b.jpg",
+    "static/media/flappy-font.ttf": "/ReactFlappyBird/static/media/flappy-font.41ab3bb3e47ae6c9d524.ttf",
+    "index.html": "/ReactFlappyBird/index.html",
+    "main.9aba8f54.css.map": "/ReactFlappyBird/static/css/main.9aba8f54.css.map",
+    "main.416372f4.js.map": "/ReactFlappyBird/static/js/main.416372f4.js.map",
+    "453.21935b00.chunk.js.map": "/ReactFlappyBird/static/js/453.21935b00.chunk.js.map"
   },
   "entrypoints": [
-    "./static/css/main.c89d5536.css",
-    "./static/js/main.de8e1adb.js"
+    "./static/css/main.9aba8f54.css",
+    "./static/js/main.416372f4.js"
   ]
 }
