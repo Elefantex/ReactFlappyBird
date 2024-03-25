@@ -18,7 +18,7 @@ function App() {
 
   const [rotate, setRotate] = useState(0)
 
-  const [velocity, setVelocity] = useState(4)
+  const [velocity, setVelocity] = useState(4.8)
   const [tiempo, setTiempo] = useState(1500)
   const [spaceBetweenTubes, setSpaceBetweenTubes] = useState(250)
 
@@ -82,7 +82,7 @@ function App() {
   const handler = (e) => {
     console.log(e)
     if (play && !e.isComposing && (e.keyCode === 32 || e.type === 'click')) {
-      if (bottom < heightScreen) {
+      if (bottom < heightScreen-50) {
         jump();
       }
 
