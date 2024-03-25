@@ -140,12 +140,23 @@ function App() {
     const moveTubes = () => {
       requestAnimationFrame(() => {
         if (play) {
-          setTubes(prevTubes => (
-            prevTubes.map(tube => ({
-              ...tube,
-              xPosition: tube.xPosition - 5 // Velocidad de movimiento de los tubos hacia la izquierda
-            }))
-          ));
+          if(widthScreen>768){
+            setTubes(prevTubes => (
+              prevTubes.map(tube => ({
+                ...tube,
+                xPosition: tube.xPosition - 5 // Velocidad de movimiento de los tubos hacia la izquierda
+              }))
+            ));
+          }
+          else{
+            setTubes(prevTubes => (
+              prevTubes.map(tube => ({
+                ...tube,
+                xPosition: tube.xPosition - 3 // Velocidad de movimiento de los tubos hacia la izquierda
+              }))
+            ));
+          }
+          
         }
       })
     };
