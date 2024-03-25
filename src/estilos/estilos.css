@@ -8,7 +8,9 @@
   background-repeat: no-repeat;
   background-image: url('../img/bird.png');
 }
+
 @media only screen and (max-width: 768px) {
+
   /* Agrega aquí tus estilos específicos para pantallas más pequeñas */
   .bird {
     width: 70px;
@@ -20,8 +22,8 @@
     background-repeat: no-repeat;
     background-image: url('../img/bird.png');
   }
-  
- 
+
+
 
   /* Otros estilos específicos para pantallas pequeñas */
 }
@@ -36,7 +38,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 0;
+
 }
+
 
 .allPipes {
   position: absolute;
@@ -65,17 +69,15 @@
 .background {
   position: absolute;
   bottom: 0;
-  height:15%;
+  height: 15%;
   width: 100%;
   background-image: url("../img/background.png");
   /* Reemplaza "ruta/a/tu/imagen-background.jpg" con la ruta real de tu imagen */
   background-position: top;
   background-repeat: repeat-x;
- /* animation: slideright 400s infinite linear;
-  -webkit-animation: slideright 400s infinite linear;*/
-  /* Prefijo Webkit para la propiedad de animación */
+
   z-index: 1;
- 
+
 
 }
 
@@ -112,7 +114,8 @@
   margin-bottom: 5px;
 
 }
-.scoreTextMain{
+
+.scoreTextMain {
   font-family: 'FlappyBirdFont', sans-serif;
   font-size: 48px;
   color: white;

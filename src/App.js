@@ -18,8 +18,11 @@ function App() {
 
   const [rotate, setRotate] = useState(0)
 
+  const [velocity, setVelocity] = useState(5)
+  const [tiempo, setTiempo] = useState(1500)
+  const [spaceBetweenTubes, setSpaceBetweenTubes] = useState(250)
 
-  let velocity = 5
+
 
   const [jumping, setJumping] = useState(false)
   const jump = () => {
@@ -32,7 +35,7 @@ function App() {
 
     const animate = (currentTime) => {
       setJumping(true)
-      
+
 
       const elapsedTime = currentTime - startTime;
       const progress = Math.min(elapsedTime / duration, 1); // Asegurarse de que el progreso no supere 1
@@ -55,7 +58,7 @@ function App() {
       requestAnimationFrame(animate);
 
     }
-    console.log(play)
+
 
 
   };
@@ -70,17 +73,22 @@ function App() {
     setPlay(true)
     setScore(0)
     setBottom((heightScreen / 2) - 50)
-    setRotate(-50)
     setTubes([])
+    setRotate(0)
     setColision(false)
   }
 
 
   const handler = (e) => {
+    console.log(e)
     if (play && !e.isComposing && (e.keyCode === 32 || e.type === 'click')) {
       if (bottom < heightScreen) {
         jump();
       }
+
+    }
+    if (!e.isComposing && e.keyCode === 81) {
+      debugger
 
     }
     if (!play && !e.isComposing && e.keyCode === 82) {
@@ -107,7 +115,7 @@ function App() {
         const newVelocity = velocity; // Simula la aceleración debida a la gravedad
         const newBottom = bottom - newVelocity;
         setBottom(newBottom > 15 * heightScreen / 100 ? newBottom : 15 * heightScreen / 100); // Limita la posición inferior
-       
+
       } else {
         setPlay(false); // Una vez que bottom es menor que 100, establece play en false
 
@@ -122,9 +130,9 @@ function App() {
     requestAnimationFrame(() => {
       if (bottom > 15 * heightScreen / 100) {
         const newVelocity = velocity; // Simula la aceleración debida a la gravedad
-        const newBottom = bottom - newVelocity*2;
+        const newBottom = bottom - newVelocity * 2;
         setBottom(newBottom > 15 * heightScreen / 100 ? newBottom : 15 * heightScreen / 100); // Limita la posición inferior
-        const newRotation = rotate + 1; // Puedes ajustar el valor de aumento según la velocidad deseada
+        const newRotation = rotate + 3; // Puedes ajustar el valor de aumento según la velocidad deseada
         setRotate(newRotation > 90 ? 90 : newRotation); // Limitar la rotación a 180 grados
 
       }
@@ -141,12 +149,15 @@ function App() {
     if (colision) {
       caidaFinal()
     }
+    else {
+      setRotate(0)
+    }
   }, [bottom, gameStarted, colision]);
 
   const generateTube = () => {
     const minTubeHeight = 40; // Altura mínima del tubo
     const maxTubeHeight = (heightScreen / 2) - 40; // Altura máxima del tubo
-    const gapBetweenTubes = 250; // Espacio entre tubos
+    const gapBetweenTubes = spaceBetweenTubes; // Espacio entre tubos
     const tubeHeight = Math.floor(Math.random() * (maxTubeHeight - minTubeHeight + 1)) + minTubeHeight; // Altura aleatoria del tubo superior
     const newTube = {
       id: Date.now(), // Identificador único para el tubo
@@ -172,7 +183,8 @@ function App() {
         generateTube();
         removeOffscreenTubes(); // Eliminar los tubos que han salido de la pantalla
       }
-    }, 1500); // Intervalo de 1.5 segundos (ajustable según la velocidad deseada)
+    }, tiempo); 
+    // Intervalo de 1.5 segundos (ajustable según la velocidad deseada)
 
     // Limpiar el intervalo cuando el componente se desmonte para evitar pérdida de memoria
     return () => clearInterval(tubeGenerator);
@@ -318,13 +330,7 @@ function App() {
     <div tabIndex="0"
       className='scene'
     >
-      {bottom}
-      <div>
-        {jumping ? <>true</> : <>false</>}setJumping
 
-      </div>
-      <div>      {play ? <>true</> : <>false</>}play
-      </div>
 
       <div ref={miDiv} className='bird' style={{
         bottom: `${bottom}px`,
