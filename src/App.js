@@ -87,10 +87,7 @@ function App() {
       }
 
     }
-    if (!e.isComposing && e.keyCode === 81) {
-      debugger
 
-    }
     if (!play && !e.isComposing && e.keyCode === 82) {
       restart()
     }
