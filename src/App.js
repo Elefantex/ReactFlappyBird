@@ -152,7 +152,7 @@ function App() {
             setTubes(prevTubes => (
               prevTubes.map(tube => ({
                 ...tube,
-                xPosition: tube.xPosition - 3 // Velocidad de movimiento de los tubos hacia la izquierda
+                xPosition: tube.xPosition - 4 // Velocidad de movimiento de los tubos hacia la izquierda
               }))
             ));
           }
