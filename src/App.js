@@ -19,21 +19,50 @@ function App() {
   const [rotate, setRotate] = useState(0)
 
 
-  let velocity = 3
+  let velocity = 5
 
-
+  const [jumping, setJumping] = useState(false)
   const jump = () => {
     setPlay(true)
     setGameStarted(true)
-    //setRotate(-20)
-    if (bottom < heightScreen) {
-      requestAnimationFrame(() => {
-        setBottom((prevAltura) => prevAltura + 120);
-        let dif = rotate - 20
-        //setRotate(rotate + dif)
-      });
+    const jumpHeight = 120; // Altura del salto
+    const duration = 500; // Duración de la animación en milisegundos
+    const startBottom = bottom; // Posición inicial del pájaro
+    const startTime = performance.now();
+
+    const animate = (currentTime) => {
+      setJumping(true)
+      
+
+      const elapsedTime = currentTime - startTime;
+      const progress = Math.min(elapsedTime / duration, 1); // Asegurarse de que el progreso no supere 1
+      const deltaY = jumpHeight * (1 - Math.pow(1 - progress, 2)); // Aplicar una función de aceleración para una sensación más natural
+      const newBottom = startBottom + deltaY; // Nueva posición del pájaro
+      setBottom(newBottom);
+
+      if (progress < 1) {
+        // Si todavía no hemos alcanzado el final de la animación, sigue animando
+        requestAnimationFrame(animate);
+      }
+      else {
+        setJumping(false); // Establece jumping en false cuando se completa la animación
+      }
+
+    };
+
+    // Inicia la animación
+    if (play) {
+      requestAnimationFrame(animate);
+
     }
+    console.log(play)
+
+
   };
+
+
+
+
 
 
 
@@ -43,6 +72,7 @@ function App() {
     setBottom((heightScreen / 2) - 50)
     setRotate(-50)
     setTubes([])
+    setColision(false)
   }
 
 
@@ -66,10 +96,10 @@ function App() {
       window.removeEventListener('keydown', handler);
       window.removeEventListener('click', handler);
     };
-  }, [play, bottom]);
+  }, [play, bottom, jumping]);
 
 
-
+  const [colision, setColision] = useState(false)
 
   const caida = () => {
     requestAnimationFrame(() => {
@@ -77,9 +107,7 @@ function App() {
         const newVelocity = velocity; // Simula la aceleración debida a la gravedad
         const newBottom = bottom - newVelocity;
         setBottom(newBottom > 15 * heightScreen / 100 ? newBottom : 15 * heightScreen / 100); // Limita la posición inferior
-        const newRotation = rotate + 1; // Puedes ajustar el valor de aumento según la velocidad deseada
-        setRotate(newRotation > 90 ? 90 : newRotation); // Limitar la rotación a 180 grados
-
+       
       } else {
         setPlay(false); // Una vez que bottom es menor que 100, establece play en false
 
@@ -90,15 +118,30 @@ function App() {
       }
     });
   };
+  const caidaFinal = () => {
+    requestAnimationFrame(() => {
+      if (bottom > 15 * heightScreen / 100) {
+        const newVelocity = velocity; // Simula la aceleración debida a la gravedad
+        const newBottom = bottom - newVelocity*2;
+        setBottom(newBottom > 15 * heightScreen / 100 ? newBottom : 15 * heightScreen / 100); // Limita la posición inferior
+        const newRotation = rotate + 1; // Puedes ajustar el valor de aumento según la velocidad deseada
+        setRotate(newRotation > 90 ? 90 : newRotation); // Limitar la rotación a 180 grados
+
+      }
+    });
+  };
 
   useEffect(() => {
 
-    if (gameStarted) {
+    if (gameStarted && !jumping) {
 
       caida();
 
     }
-  }, [bottom, gameStarted]);
+    if (colision) {
+      caidaFinal()
+    }
+  }, [bottom, gameStarted, colision]);
 
   const generateTube = () => {
     const minTubeHeight = 40; // Altura mínima del tubo
@@ -140,7 +183,7 @@ function App() {
     const moveTubes = () => {
       requestAnimationFrame(() => {
         if (play) {
-          if(widthScreen>768){
+          if (widthScreen > 768) {
             setTubes(prevTubes => (
               prevTubes.map(tube => ({
                 ...tube,
@@ -148,7 +191,7 @@ function App() {
               }))
             ));
           }
-          else{
+          else {
             setTubes(prevTubes => (
               prevTubes.map(tube => ({
                 ...tube,
@@ -156,7 +199,7 @@ function App() {
               }))
             ));
           }
-          
+
         }
       })
     };
@@ -166,7 +209,7 @@ function App() {
     return () => clearInterval(tubesMovement);
   }, [play]);
 
-  
+
   useEffect(() => {
     const checkCollision = () => {
       const birdRect = miDiv.current.getBoundingClientRect();
@@ -198,7 +241,9 @@ function App() {
         ) {
           //console.log("222Colisión con la zona verde superior detectada");
           setPlay(false); // Detener el juego si hay colisión con la zona verde superior
-       
+          setColision(true)
+
+
         }
       });
 
@@ -213,6 +258,8 @@ function App() {
         ) {
           //console.log("3333Colisión con la zona verde inferior detectada");
           setPlay(false); // Detener el juego si hay colisión con la zona verde inferior
+          setColision(true)
+
         }
       });
     };
@@ -271,10 +318,17 @@ function App() {
     <div tabIndex="0"
       className='scene'
     >
+      {bottom}
+      <div>
+        {jumping ? <>true</> : <>false</>}setJumping
+
+      </div>
+      <div>      {play ? <>true</> : <>false</>}play
+      </div>
 
       <div ref={miDiv} className='bird' style={{
         bottom: `${bottom}px`,
-        //transform: `rotate(${rotate}deg)`,
+        transform: `rotate(${rotate}deg)`,
       }} > </div>
 
 
