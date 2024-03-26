@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.css": "/ReactFlappyBird/static/css/main.4257b44d.css",
-    "main.js": "/ReactFlappyBird/static/js/main.a3c5e989.js",
+    "main.css": "/ReactFlappyBird/static/css/main.3d7109ff.css",
+    "main.js": "/ReactFlappyBird/static/js/main.534d5d09.js",
     "static/js/453.21935b00.chunk.js": "/ReactFlappyBird/static/js/453.21935b00.chunk.js",
+    "static/media/point.mp3": "/ReactFlappyBird/static/media/point.02dd6c8e743096042492.mp3",
+    "static/media/flap.mp3": "/ReactFlappyBird/static/media/flap.caa93a6cf53fb34406be.mp3",
     "static/media/background.png": "/ReactFlappyBird/static/media/background.42827edd65e45083dab6.png",
+    "static/media/collisionPipe.mp3": "/ReactFlappyBird/static/media/collisionPipe.dce2d951af132c713112.mp3",
     "static/media/scene.jpg": "/ReactFlappyBird/static/media/scene.48e5451a651740135a7b.jpg",
     "static/media/flappy-font.ttf": "/ReactFlappyBird/static/media/flappy-font.41ab3bb3e47ae6c9d524.ttf",
     "index.html": "/ReactFlappyBird/index.html",
-    "main.4257b44d.css.map": "/ReactFlappyBird/static/css/main.4257b44d.css.map",
-    "main.a3c5e989.js.map": "/ReactFlappyBird/static/js/main.a3c5e989.js.map",
+    "main.3d7109ff.css.map": "/ReactFlappyBird/static/css/main.3d7109ff.css.map",
+    "main.534d5d09.js.map": "/ReactFlappyBird/static/js/main.534d5d09.js.map",
     "453.21935b00.chunk.js.map": "/ReactFlappyBird/static/js/453.21935b00.chunk.js.map"
   },
   "entrypoints": [
-    "./static/css/main.4257b44d.css",
-    "./static/js/main.a3c5e989.js"
+    "./static/css/main.3d7109ff.css",
+    "./static/js/main.534d5d09.js"
   ]
 }
