@@ -8,7 +8,14 @@
   background-repeat: no-repeat;
   background-image: url('../img/bird.png');
 }
-
+@keyframes desplazarFondoMovil {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
 @media only screen and (max-width: 768px) {
 
   .bird {
@@ -21,7 +28,11 @@
     background-repeat: no-repeat;
     background-image: url('../img/bird.png');
   }
+  
+  .background{
+    animation: desplazarFondoMovil 4s linear infinite !important; /* Ajusta la velocidad según tus preferencias */
 
+  }
 
 
 }
