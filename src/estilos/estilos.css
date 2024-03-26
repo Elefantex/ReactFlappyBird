@@ -63,7 +63,14 @@
   background-image: url("../img/pipeBottom.png");
 
 }
-
+@keyframes desplazarFondo {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
 .background {
   position: absolute;
   bottom: 0;
@@ -72,6 +79,7 @@
   background-image: url("../img/background.png");
   background-position: top;
   background-repeat: repeat-x;
+  animation: desplazarFondo 4s linear infinite; /* Ajusta la velocidad según tus preferencias */
 
   z-index: 1;
 
@@ -147,6 +155,7 @@
 
 .container {
   padding: 20px;
+
 }
 
 .restartBtn {
@@ -159,6 +168,30 @@
   outline: 3px solid #553000;
 
 }
-*>*:not(.scoreTextMain){
-  overflow:hidden
+.clicked{
+  filter: grayscale(100%);
+}
+
+*>*:not(.scoreTextMain) {
+  overflow: hidden
+}
+
+.containerPadre {
+  display: flex;
+  align-items: center;
+}
+
+.speaker {
+  background-image: url("../img/speaker.png");
+  width: 30px;
+  height: 30px;
+  z-index: 100;
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 10px;
+
+}
+.off{
+  filter: grayscale(100%);
 }

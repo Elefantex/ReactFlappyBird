@@ -2,6 +2,9 @@ import './App.css';
 import React, { useEffect, useState, useRef } from 'react';
 import "./estilos/estilos.css"
 import GameOver from './estilos/GameOver';
+import flap from "./sounds/flap.mp3"
+import point from "./sounds/point.mp3"
+import collisionPipe from "./sounds/collisionPipe.mp3"
 
 
 
@@ -17,15 +20,19 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false)
 
   const [rotate, setRotate] = useState(0)
+  const [level, setLevel] = useState(1)
+  const [velocity, setVelocity] = useState(4.9)
+  const [tiempo, setTiempo] = useState(1500)
+  const [spaceBetweenTubes, setSpaceBetweenTubes] = useState(250)
+  const [sonido, setSonido] = useState(true)
 
-  const velocity = 4.9
-  const tiempo = 1500
-  const spaceBetweenTubes = 250
 
 
 
   const [jumping, setJumping] = useState(false)
   const jump = () => {
+    if (sonido) new Audio(flap).play()
+
     setPlay(true)
     setGameStarted(true)
     const jumpHeight = 120; // Altura del salto
@@ -69,7 +76,26 @@ function App() {
 
 
 
-  const restart = () => {
+  const restart = (level) => {
+    setLevel(level)
+    setVelocity(4.9 * level)
+    //setTiempo(1500 / level)
+    switch (level) {
+      case 0.5:
+        setSpaceBetweenTubes(250 * 1.2)
+        setTiempo(1500 * 1.2)
+        break;
+      case 1:
+        setSpaceBetweenTubes(250 * 1)
+        setTiempo(1500 * 1)
+        break;
+      case 1.5:
+        setSpaceBetweenTubes(250 * 0.9)
+        setTiempo(1500 * 0.8)
+        break;
+      default:
+        break;
+    }
     setPlay(true)
     setScore(0)
     setBottom((heightScreen / 2) - 50)
@@ -88,10 +114,6 @@ function App() {
 
     }
 
-    if (!play && !e.isComposing && e.keyCode === 82) {
-      restart()
-    }
-
   };
 
   useEffect(() => {
@@ -101,7 +123,7 @@ function App() {
       window.removeEventListener('keydown', handler);
       window.removeEventListener('click', handler);
     };
-  }, [play, bottom, jumping]);
+  }, [play, bottom, jumping, sonido]);
 
 
   const [colision, setColision] = useState(false)
@@ -115,6 +137,7 @@ function App() {
 
       } else {
         setPlay(false); // Una vez que bottom es menor que 100, establece play en false
+        if (sonido) new Audio(collisionPipe).play()
 
       }
       if (!play) {
@@ -276,6 +299,11 @@ function App() {
 
     checkCollision();
   }, [bottom, tubes]);
+  useEffect(() => {
+    if (colision && sonido) {
+      new Audio(collisionPipe).play();
+    }
+  }, [colision])
   const [score, setScore] = useState(0)
   let puntos = 0
   useEffect(() => {
@@ -290,6 +318,9 @@ function App() {
             // Incrementa el puntaje si este tubo aún no ha sido pasado
             puntos = puntos + 1
             setScore(prevScore => prevScore + 1);
+            if (sonido) new Audio(point).play()
+
+
             // Marca este tubo como pasado para evitar contar el mismo tubo varias veces
             setTubes(prevTubes =>
               prevTubes.map(prevTube =>
@@ -317,9 +348,32 @@ function App() {
 
   }, [score])
 
-  const handleRestart = () => {
+  const handleRestart = (level) => {
+    setLevel(level)
+    restart(level)
 
-    restart()
+
+  };
+  useEffect(() => {
+    setLevel(level)
+  }, [handleRestart])
+  const music = JSON.parse(localStorage.getItem('music'));
+
+  useEffect(() => {
+
+    if (music !== null) {
+      setSonido(music);
+    }
+
+
+  }, [music, sonido]);
+
+
+  const toggleSonido = (e) => {
+    e.stopPropagation();
+    setSonido(!sonido);
+    localStorage.setItem("music", JSON.stringify(!sonido))
+
 
   };
 
@@ -327,7 +381,7 @@ function App() {
     <div tabIndex="0"
       className='scene'
     >
-
+      <div tabIndex="100" className={sonido ? "speaker" : "speaker off"} onClick={toggleSonido}></div>
 
       <div ref={miDiv} className='bird' style={{
         bottom: `${bottom}px`,
@@ -342,7 +396,7 @@ function App() {
           <div className='pipeTop' style={{
             height: tube.topHeight,
           }}></div>
-          <div className='pipeMiddle' style={{ top: -tube.topHeight, }}></div>
+          <div className='pipeMiddle' style={{ top: -tube.topHeight, height: `${spaceBetweenTubes}px` }}></div>
           <div className='pipeBottom' style={{ height: tube.bottomHeight, }}></div>
         </div>
       ))}
@@ -354,7 +408,7 @@ function App() {
         {score}
       </div> : null}
       {play ? null :
-        <GameOver onRestart={handleRestart} />
+        <GameOver onRestart={handleRestart} level={level} />
 
       }
 
